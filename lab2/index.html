@@ -1,0 +1,41 @@
+<script>
+    window.onload = function() {
+  generateRandomString();
+  document.addEventListener("keyup", function(e) {
+    console.log(e.key);
+    var container = document.getElementById("container");
+    var str = container.textContent;
+    if (e.key === str.charAt(0)) {
+      container.textContent = str.substring(1, str.length);
+    }
+    add_new_chars();
+  });
+};
+
+function generateRandomString() {
+  var container = document.getElementById("container");
+  var length = Math.floor(Math.random() * 3); // 生成长度为0到2的随机数
+  var randomString = '';
+  for (var i = 0; i < length; i++) {
+    randomString += String.fromCharCode(97 + Math.floor(Math.random() * 26)); // 生成随机的a-z字母
+  }
+  container.textContent = randomString;
+}
+
+function add_new_chars() {
+  var container = document.getElementById("container");
+  var str = container.textContent;
+  var length = Math.floor(Math.random() * 3) + 1; // 生成长度为1到3的随机数
+  for (var i = 0; i < length; i++) {
+    var newChar = String.fromCharCode(97 + Math.floor(Math.random() * 26)); // 生成随机的a-z字母
+    str += newChar;
+  }
+  container.textContent = str;
+}
+</script>
+<html>
+<body>
+<div id="container" tabindex="0" class="blockquote text-nowrap">
+  </div>
+</body>
+</html>
